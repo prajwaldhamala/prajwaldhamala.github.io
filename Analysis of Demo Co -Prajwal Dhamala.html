@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudin Neupane, Prajwal Dhamala, Sanchit Bhattarai — Financial Analytics Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+  :root{
+    --navy:#0D1B2A;
+    --navy2:#1A2E42;
+    --navy3:#1E3A5F;
+    --gold:#C9A84C;
+    --gold2:#E8C76A;
+    --white:#FFFFFF;
+    --off:#F8F9FB;
+    --muted:#A8BDD0;
+    --green:#27AE60;
+    --orange:#E67E22;
+    --red:#C0392B;
+    --text:#0D1B2A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+
+  /* ── LANDING ── */
+  #landing-view{min-height:100vh;display:flex;flex-direction:column}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);background:rgba(13,27,42,0.85);border-bottom:1px solid rgba(201,168,76,0.15)}
+  .nav-logo{display:flex;align-items:center;gap:10px}
+  .nav-monogram{background:var(--gold);color:var(--navy);width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:16px}
+  .nav-name{font-size:14px;font-weight:600;letter-spacing:.3px}
+  .nav-title{font-size:10px;color:var(--muted);margin-top:1px;letter-spacing:.5px;text-transform:uppercase}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:rgba(255,255,255,.9);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;letter-spacing:.2px}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{background:var(--gold);color:var(--navy);padding:8px 20px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px}
+  .nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+  /* HERO */
+  .hero{flex:1;display:flex;align-items:center;justify-content:center;padding:120px 48px 60px;position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(30,58,95,0.4) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(201,168,76,0.08) 0%,transparent 60%)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%)}
+  .hero-inner{max-width:1100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+  .hero-left{}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.8px;text-transform:uppercase;margin-bottom:24px}
+  .hero-tag-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(38px,4.5vw,58px);font-weight:900;line-height:1.08;letter-spacing:-1px;margin-bottom:8px}
+  h1 .gold{color:var(--gold)}
+  .hero-sub{font-size:17px;color:#DDE8F0;font-weight:400;line-height:1.6;margin-bottom:32px;max-width:460px}
+  .hero-sub strong{color:var(--white);font-weight:500}
+  .hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .btn-primary{background:var(--gold);color:var(--navy);padding:13px 28px;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+  .btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.25)}
+  .btn-secondary{background:transparent;color:var(--white);padding:13px 28px;border-radius:7px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,.2);transition:all .2s;display:flex;align-items:center;gap:8px}
+  .btn-secondary:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
+  .hero-creds{margin-top:40px;display:flex;gap:20px;flex-wrap:wrap}
+  .cred-tag{display:flex;align-items:center;gap:6px;font-size:11px;color:#C0D0E0;font-weight:500;letter-spacing:.3px}
+  .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+  /* HERO RIGHT — KPI PREVIEW */
+  .hero-right{display:flex;flex-direction:column;gap:12px}
+  .kpi-preview-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px 20px;backdrop-filter:blur(8px);transition:all .25s;cursor:default}
+  .kpi-preview-card:hover{background:rgba(255,255,255,.07);border-color:rgba(201,168,76,.25);transform:translateX(4px)}
+  .kpi-preview-card.featured{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.06)}
+  .kpip-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:6px}
+  .kpip-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .kpip-val{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--white)}
+  .kpip-val.gold{color:var(--gold)}.kpip-val.green{color:var(--green)}.kpip-val.orange{color:var(--orange)}
+  .kpip-delta{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px}
+  .dp-green{background:rgba(39,174,96,.15);color:#5DE87A}
+  .dp-orange{background:rgba(230,126,34,.15);color:#FFAA55}
+  .dp-red{background:rgba(192,57,43,.15);color:#FF7060}
+  .kpip-sub{font-size:10px;color:#B8CCD8;margin-top:3px}
+  .kpi-mini-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .kpi-mini{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:12px 14px}
+  .kmi-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px}
+  .kmi-val{font-size:18px;font-weight:700;color:var(--white)}
+  .kmi-val.green{color:var(--green)}.kmi-val.orange{color:var(--orange)}
+
+  /* STATS SECTION */
+  .stats-section{background:var(--navy2);padding:60px 48px;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+  .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+  .stat-item{}
+  .stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gold);line-height:1}
+  .stat-lbl{font-size:11px;color:#C0D4E0;margin-top:6px;text-transform:uppercase;letter-spacing:.6px;font-weight:500}
+
+  /* ABOUT SECTION */
+  .about-section{padding:80px 48px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .about-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:14px}
+  .about-heading{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.2;margin-bottom:20px;color:#FFFFFF}
+  .about-text{font-size:14px;color:#E2EBF2;line-height:1.85;margin-bottom:16px;font-weight:400}
+  .skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  .skill-tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:6px;padding:8px 14px;font-size:12px;font-weight:500;color:#EEF3F8;display:flex;align-items:center;gap:8px;font-weight:500}
+  .skill-icon{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+  .about-right{}
+  .cert-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px;margin-bottom:12px;transition:all .2s}
+  .cert-card:hover{border-color:rgba(201,168,76,.25)}
+  .cert-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .cert-name{font-size:14px;font-weight:600;color:var(--white)}
+  .cert-status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px}
+  .cs-done{background:rgba(39,174,96,.15);color:#5DE87A}
+  .cs-prog{background:rgba(201,168,76,.15);color:var(--gold)}
+  .cs-next{background:rgba(255,255,255,.08);color:var(--muted)}
+  .cert-desc{font-size:12px;color:#C8D8E4;line-height:1.6;margin-top:4px}
+
+  /* DASHBOARD PREVIEW SECTION */
+  .preview-section{padding:80px 48px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.06)}
+  .preview-inner{max-width:1100px;margin:0 auto}
+  .section-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:12px}
+  .section-heading{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.2;margin-bottom:12px}
+  .section-sub{font-size:14px;color:#D8E4EE;margin-bottom:40px;max-width:540px}
+  .preview-features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
+  .pf-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:20px}
+  .pf-icon{font-size:22px;margin-bottom:10px}
+  .pf-title{font-size:13px;font-weight:700;color:#FFFFFF;margin-bottom:5px}
+  .pf-desc{font-size:12px;color:#C8D8E4;line-height:1.55}
+  .launch-btn{background:var(--gold);color:var(--navy);padding:15px 36px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px;display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif}
+  .launch-btn:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,168,76,0.3)}
+  .launch-arrow{font-size:18px;transition:transform .2s}
+  .launch-btn:hover .launch-arrow{transform:translateX(4px)}
+
+  /* FOOTER */
+  footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:36px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap}
+  .footer-left{font-size:13px;color:#C0D0DC}
+  .footer-left strong{color:var(--white)}
+  .footer-right{display:flex;gap:20px}
+  .footer-right a{font-size:12px;color:#C0D0DC;text-decoration:none;transition:color .2s}
+  .footer-right a:hover{color:var(--gold)}
+
+  /* ── DASHBOARD VIEW ── */
+  #dashboard-view{display:none;flex-direction:column;min-height:100vh}
+  #dashboard-view.active{display:flex}
+  .db-topbar{background:#1E3A5F;color:#fff;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.3);flex-shrink:0}
+  .db-back{display:flex;align-items:center;gap:10px;cursor:pointer;transition:opacity .2s}
+  .db-back:hover{opacity:.8}
+  .db-back-arrow{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:5px}
+  .db-brand{font-size:14px;font-weight:600;opacity:.8}
+
+  /* ANIMATIONS */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .hero-left>*{animation:fadeUp .7s ease both}
+  .hero-tag{animation-delay:.1s}
+  h1{animation-delay:.2s}
+  .hero-sub{animation-delay:.3s}
+  .hero-btns{animation-delay:.4s}
+  .hero-creds{animation-delay:.5s}
+  .hero-right{animation:fadeIn .8s .4s ease both}
+
+  /* ── LANDING PAGE PROTECTION ── */
+  #landing-view{background:#0D1B2A !important;color:#FFFFFF !important}
+  /* ── DASHBOARD EMBEDDED STYLES ── */
+
+*{box-sizing:border-box;margin:0;padding:0}
+#db-content{font-family:'Segoe UI',Arial,sans-serif;background:#F0F4F8;color:#1A1A2E;font-size:13px}
+.topbar{background:#1E3A5F;color:#fff;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.logo{background:#C9A84C;color:#1E3A5F;font-weight:900;font-size:16px;padding:5px 11px;border-radius:5px;letter-spacing:1px}
+.topbar-title{font-size:15px;font-weight:700}
+.topbar-sub{font-size:10px;color:rgba(255,255,255,.6);margin-top:2px}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.report-date{font-size:11px;color:rgba(255,255,255,.6)}
+.live-badge{background:#C9A84C;color:#1E3A5F;font-size:10px;font-weight:800;padding:3px 9px;border-radius:12px;letter-spacing:.5px}
+.filterbar{background:#243956;padding:10px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-bottom:2px solid #C9A84C}
+.flabel{color:rgba(255,255,255,.65);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-right:2px}
+.fbtn{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:4px 13px;border-radius:14px;cursor:pointer;font-size:10px;font-weight:600;transition:all .15s}
+.fbtn.active{background:#C9A84C;color:#1E3A5F;border-color:#C9A84C}
+.fbtn:hover:not(.active){background:rgba(255,255,255,.2)}
+.fdiv{width:1px;height:20px;background:rgba(255,255,255,.2)}
+.main{padding:16px 24px}
+.kpi-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:#fff;border-radius:7px;padding:13px 15px;box-shadow:0 1px 5px rgba(0,0,0,.08);border-top:3px solid #1E3A5F;transition:transform .15s,box-shadow .15s;cursor:default}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.13)}
+.kpi.green{border-top-color:#27AE60}.kpi.orange{border-top-color:#E67E22}.kpi.red{border-top-color:#C0392B}
+.kpi-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#64748B;margin-bottom:4px}
+.kpi-val{font-size:21px;font-weight:800;color:#1E3A5F;line-height:1.1;margin-bottom:4px}
+.kpi-val.green{color:#27AE60}.kpi-val.orange{color:#E67E22}.kpi-val.red{color:#C0392B}
+.kpi-sub{font-size:9.5px;color:#64748B}
+.up{color:#27AE60;font-weight:700}.warn{color:#E67E22;font-weight:700}
+.row{display:grid;gap:13px;margin-bottom:13px}
+.row-6-4{grid-template-columns:6fr 4fr}
+.row-4-3-3{grid-template-columns:4fr 3fr 3fr}
+.row-5-5{grid-template-columns:1fr 1fr}
+.row-full{grid-template-columns:1fr}
+.card{background:#fff;border-radius:7px;padding:15px 16px;box-shadow:0 1px 5px rgba(0,0,0,.08)}
+.card-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.card-title{font-size:11px;font-weight:700;color:#1E3A5F;text-transform:uppercase;letter-spacing:.4px}
+.card-sub{font-size:9.5px;color:#64748B;margin-top:1px}
+.cbadge{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:9px;white-space:nowrap}
+.cb-green{background:#D5F5E3;color:#1D6340}.cb-orange{background:#FDEBD0;color:#784212}.cb-red{background:#FADBD8;color:#922B21}.cb-navy{background:#EBF2FA;color:#1E3A5F}
+.chart-wrap{position:relative;width:100%}
+canvas{display:block;width:100%}
+.ar-tbl{width:100%;border-collapse:collapse;font-size:10.5px;margin-top:8px}
+.ar-tbl th{background:#1E3A5F;color:#fff;padding:6px 10px;text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.ar-tbl td{padding:7px 10px;border-bottom:1px solid #E2E8F0;vertical-align:middle}
+.ar-tbl tr:hover td{background:#EBF2FA}
+.btag{display:inline-block;padding:2px 8px;border-radius:9px;font-size:9.5px;font-weight:700}
+.b0{background:#D5F5E3;color:#1D6340}.b1{background:#FEF9E7;color:#7D6608}.b2{background:#FCF3CF;color:#7E5109}.b3{background:#FAD7A0;color:#784212}.b4{background:#F5B7B1;color:#922B21}
+.wf-row{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #E2E8F0}
+.wf-lbl{width:190px;font-size:10.5px;color:#1A1A2E;flex-shrink:0}
+.wf-wrap{flex:1;background:#F5F7FA;height:18px;border-radius:3px;overflow:hidden;position:relative}
+.wf-bar{height:100%;border-radius:3px}
+.wf-pos{background:#27AE60}.wf-neg{background:#C0392B}.wf-neu{background:#1E3A5F}
+.wf-val{width:85px;text-align:right;font-size:10.5px;font-weight:700;flex-shrink:0}
+.wfvp{color:#27AE60}.wfvn{color:#C0392B}.wfvu{color:#1E3A5F}
+.bucket-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.bucket{text-align:center;padding:8px 6px;border-radius:6px}
+.bucket .bl{font-size:9px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.3px}
+.bucket .bv{font-size:13px;font-weight:800;margin-top:2px}
+.footer{background:#1E3A5F;color:rgba(255,255,255,.55);text-align:center;font-size:10px;padding:12px;margin-top:10px}
+.footer span{color:#C9A84C;font-weight:700}
+.tip{position:fixed;background:rgba(20,30,50,.93);color:#fff;padding:7px 11px;border-radius:5px;font-size:11px;pointer-events:none;display:none;z-index:9999;border:1px solid rgba(201,168,76,.4);line-height:1.6;box-shadow:0 4px 14px rgba(0,0,0,.3);max-width:220px}
+@media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,1fr)}.row-6-4,.row-4-3-3,.row-5-5{grid-template-columns:1fr}}
+
+  @media(max-width:900px){
+    .hero-inner,.about-section{grid-template-columns:1fr}
+    .hero-right{display:none}
+    .stats-inner{grid-template-columns:repeat(2,1fr)}
+    .preview-features{grid-template-columns:1fr 1fr}
+    nav{padding:14px 24px}
+    .nav-links{display:none}
+    .hero{padding:90px 24px 40px}
+    .stats-section,.about-section,.preview-section{padding:50px 24px}
+    footer{padding:28px 24px;flex-direction:column;gap:12px;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ LANDING ══════════════════════════════════════════ -->
+<div id="landing-view">
+
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-monogram">SN</div>
+      <div>
+        <div class="nav-name">Sudin Neupane, Prajwal Dhamala, Sanchit Bhattarai</div>
+        <div class="nav-title">Financial Analyst &amp; ACCA Student</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#dashboard">Dashboard</a>
+    </div>
+    <button class="nav-cta" onclick="launchDashboard()">Launch Dashboard →</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag"><span class="hero-tag-dot"></span>Financial Analytics Portfolio</div>
+        <h1>Executive<br>Financial<br><span class="gold">Dashboards</span></h1>
+        <p class="hero-sub">Built on real <strong>Xero accounting data</strong>, this interactive dashboard delivers CEO-grade financial intelligence — revenue trends, profitability, cash flow, and AR health in one view.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="launchDashboard()">
+            <span>Launch Dashboard</span>
+            <span>→</span>
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+            <span>About This Project</span>
+          </button>
+        </div>
+        <div class="hero-creds">
+          <div class="cred-tag"><div class="cred-dot"></div>ACCA Professional</div>
+          <div class="cred-tag"><div class="cred-dot"></div>Xero Certified Advisor</div>
+          <div class="cred-tag"><div class="cred-dot"></div>QuickBooks Certified</div>
+          <div class="cred-tag"><div class="cred-dot"></div>Kathmandu, Nepal</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="kpi-preview-card featured">
+          <div class="kpip-label">FY2025 Revenue</div>
+          <div class="kpip-row">
+            <div class="kpip-val gold">$319,840</div>
+            <div class="kpip-delta dp-green">▲ +38.8% YoY</div>
+          </div>
+          <div class="kpip-sub">vs FY2024: $230,350 &nbsp;·&nbsp; 12-month full year</div>
+        </div>
+        <div class="kpi-mini-row">
+          <div class="kpi-mini"><div class="kmi-lbl">Gross Margin</div><div class="kmi-val green">65.0%</div></div>
+          <div class="kpi-mini"><div class="kmi-lbl">Growth YoY</div><div class="kmi-val green">+38.8%</div></div>
+        </div>
+        <div class="kpi-preview-card">
+          <div class="kpip-label">AR Outstanding</div>
+          <div class="kpip-row">
+            <div class="kpip-val orange">$64,560</div>
+            <div class="kpip-delta dp-orange">8 Open</div>
+          </div>
+          <div class="kpip-sub">$2,420 at 90+ days · Requires attention</div>
+        </div>
+        <div class="kpi-mini-row">
+          <div class="kpi-mini"><div class="kmi-lbl">Cash (Apr-26)</div><div class="kmi-val orange">$6,187</div></div>
+          <div class="kpi-mini"><div class="kmi-lbl">DSO</div><div class="kmi-val green">38 Days</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">$549K</div><div class="stat-lbl">Total Revenue Analysed</div></div>
+      <div class="stat-item"><div class="stat-num">90+</div><div class="stat-lbl">Invoices Processed</div></div>
+      <div class="stat-item"><div class="stat-num">28</div><div class="stat-lbl">Months of Data</div></div>
+      <div class="stat-item"><div class="stat-num">6</div><div class="stat-lbl">Interactive Charts</div></div>
+    </div>
+  </section>
+
+  <section id="about" style="background:rgba(10,20,32,0.6)">
+    <div class="about-section">
+      <div class="about-left">
+        <div class="about-tag">About This Project</div>
+        <h2 class="about-heading">Institutional-Grade Financial Analysis for Growing Businesses</h2>
+        <p class="about-text">This dashboard was built using live Xero accounting data, covering 28 months of financial history across FY2024, FY2025, and 2026 YTD.</p>
+        <p class="about-text">Built to demonstrate the same methodology used in outsourcing and professional services firms: automated data extraction, structured P&amp;L modelling, AR aging analysis, and executive-ready visualisation.</p>
+        <div class="skill-grid">
+          <div class="skill-tag"><div class="skill-icon"></div>Xero Accounting</div>
+          <div class="skill-tag"><div class="skill-icon"></div>Financial Modelling</div>
+          <div class="skill-tag"><div class="skill-icon"></div>AR Aging Analysis</div>
+          <div class="skill-tag"><div class="skill-icon"></div>P&amp;L Modelling</div>
+          <div class="skill-tag"><div class="skill-icon"></div>Data Visualisation</div>
+          <div class="skill-tag"><div class="skill-icon"></div>Cash Flow Analysis</div>
+          <div class="skill-tag"><div class="skill-icon"></div>IFRS Reporting</div>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="about-tag">Credentials &amp; Projects</div>
+        <div class="cert-card">
+          <div class="cert-top"><span class="cert-name">ACCA — Professional Level Student</span><span class="cert-status cs-prog">In Progress</span></div>
+          <div class="cert-desc">Advanced financial management, strategic business reporting, and audit &amp; assurance. Global accounting qualification recognised in 180+ countries.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-top"><span class="cert-name">Nepal Telecom (NTC) — DCF Valuation Model</span><span class="cert-status cs-done">✓ Independent Project</span></div>
+          <div class="cert-desc">8-sheet Excel DCF model built from NTC's official financial statements. Bull/Base/Bear scenario toggle, sensitivity heatmaps, PP&amp;E roll-forward, and a 15-page valuation report. Implied price: NPR 532 vs market ~NPR 880.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-top"><span class="cert-name">Executive Financial Dashboard (This Project)</span><span class="cert-status cs-done">✓ Independent Project</span></div>
+          <div class="cert-desc">End-to-end financial analytics pipeline — Xero data extraction, structured P&amp;L modelling, AR aging analysis, cash flow tracking, and interactive CEO-grade dashboard. Zero external dependencies.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-top"><span class="cert-name">Xero Advisor Certification</span><span class="cert-status cs-done">✓ Certified</span></div>
+          <div class="cert-desc">Xero platform setup, client management, bank reconciliation, and financial reporting.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-top"><span class="cert-name">QuickBooks ProAdvisor Certification</span><span class="cert-status cs-done">✓ Certified</span></div>
+          <div class="cert-desc">QuickBooks Online accounting, payroll management, and financial reporting workflows.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preview-section" id="dashboard">
+    <div class="preview-inner">
+      <div class="section-tag">Interactive Dashboard</div>
+      <h2 class="section-heading">Full Financial Intelligence,<br>One Click Away</h2>
+      <p class="section-sub">7 interactive charts, 6 KPI cards, AR aging table, P&amp;L waterfall, and real-time filters. Zero installs, runs in any browser.</p>
+      <div class="preview-features">
+        <div class="pf-card"><div class="pf-icon">📊</div><div class="pf-title">Revenue Trend Analysis</div><div class="pf-desc">FY2024 vs FY2025 monthly comparison with YoY overlay and metric toggle</div></div>
+        <div class="pf-card"><div class="pf-icon">💰</div><div class="pf-title">P&amp;L Waterfall</div><div class="pf-desc">Revenue → COGS → Gross Profit → EBITDA bridge with all expense lines</div></div>
+        <div class="pf-card"><div class="pf-icon">🏦</div><div class="pf-title">Cash Flow Tracking</div><div class="pf-desc">28-month closing cash position with positive/negative colour coding</div></div>
+        <div class="pf-card"><div class="pf-icon">📋</div><div class="pf-title">AR Aging Detail</div><div class="pf-desc">Every open invoice bucketed by days overdue with risk flags</div></div>
+        <div class="pf-card"><div class="pf-icon">👥</div><div class="pf-title">Customer Revenue Mix</div><div class="pf-desc">Top 6 clients ranked by revenue with concentration risk visibility</div></div>
+        <div class="pf-card"><div class="pf-icon">📉</div><div class="pf-title">EBITDA Margin Trend</div><div class="pf-desc">Monthly margin analysis with FY comparison and 10% target benchmark</div></div>
+      </div>
+      <button class="launch-btn" onclick="launchDashboard()">
+        Launch Interactive Dashboard <span class="launch-arrow">→</span>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left"><strong>Sudin Neupane, Prajwal Dhamala, Sanchit Bhattarai</strong> · ACCA Student · Financial Analyst · Kathmandu, Nepal</div>
+    <div class="footer-right">
+      <a href="https://www.linkedin.com/in/sudin-neupane777" target="_blank">LinkedIn ↗</a>
+      <a href="#" onclick="launchDashboard();return false">Dashboard</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ DASHBOARD ══════════════════════════════════════════ -->
+<div id="dashboard-view">
+  <div class="db-topbar">
+    <div class="db-back" onclick="backToLanding()">
+      <div class="db-back-arrow">← Back</div>
+      <div class="db-brand">Sudin Neupane, Prajwal Dhamala, Sanchit Bhattarai · Portfolio</div>
+    </div>
+    <div style="color:rgba(255,255,255,.5);font-size:11px">Demo Company (Global) · Executive Dashboard · 16 April 2026</div>
+  </div>
+  <div id="db-content">
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">DC</div>
+    <div>
+      <div class="topbar-title">Demo Company (Global) — Executive Financial Dashboard</div>
+      <div class="topbar-sub">Source: Xero &nbsp;|&nbsp; Currency: USD &nbsp;|&nbsp; FY2024–FY2026 YTD</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="report-date">Report Date: 16 April 2026</div>
+    <div class="live-badge">● LIVE DATA</div>
+  </div>
+</div>
+
+<div class="filterbar">
+  <span class="flabel">Year</span>
+  <button class="fbtn" id="fy-all" onclick="filterYear('all')">All</button>
+  <button class="fbtn" id="fy-2024" onclick="filterYear('2024')">FY 2024</button>
+  <button class="fbtn active" id="fy-2025" onclick="filterYear('2025')">FY 2025</button>
+  <button class="fbtn" id="fy-2026" onclick="filterYear('2026')">2026 YTD</button>
+  <div class="fdiv"></div>
+  <span class="flabel">Metric</span>
+  <button class="fbtn active" id="mt-revenue" onclick="filterMetric('revenue')">Revenue</button>
+  <button class="fbtn" id="mt-gp" onclick="filterMetric('gp')">Gross Profit</button>
+  <button class="fbtn" id="mt-ebitda" onclick="filterMetric('ebitda')">EBITDA</button>
+  <div class="fdiv"></div>
+  <span class="flabel">Compare</span>
+  <button class="fbtn active" id="cmp-btn" onclick="toggleCompare()">YoY Overlay ON</button>
+</div>
+
+<div class="main">
+  <div class="kpi-strip">
+    <div class="kpi green" id="kpi-rev"><div class="kpi-lbl" id="kpi-rev-lbl">FY2025 Revenue</div><div class="kpi-val green" id="kpi-rev-val">$319,840</div><div class="kpi-sub" id="kpi-rev-sub"><span class="up">▲ +38.8%</span> vs FY2024 $230,350</div></div>
+    <div class="kpi green" id="kpi-gp"><div class="kpi-lbl">Gross Profit Margin</div><div class="kpi-val green" id="kpi-gp-val">65.0%</div><div class="kpi-sub" id="kpi-gp-sub">GP: $207,896 | FY24: 65.0%</div></div>
+    <div class="kpi orange" id="kpi-ebitda"><div class="kpi-lbl">EBITDA Margin</div><div class="kpi-val orange" id="kpi-ebitda-val">–4.5%</div><div class="kpi-sub" id="kpi-ebitda-sub">EBITDA: –$14,348 | Opex heavy</div></div>
+    <div class="kpi green" id="kpi-growth"><div class="kpi-lbl" id="kpi-growth-lbl">Revenue Growth YoY</div><div class="kpi-val green" id="kpi-growth-val">+38.8%</div><div class="kpi-sub" id="kpi-growth-sub">FY24 → FY25 | Strong trajectory</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">AR Outstanding</div><div class="kpi-val orange">$64,560</div><div class="kpi-sub">8 open invoices | <span class="warn">⚠ $2,420 critical</span></div></div>
+    <div class="kpi orange"><div class="kpi-lbl">Cash Position</div><div class="kpi-val orange">$6,187</div><div class="kpi-sub">Apr 2026 closing | <span class="warn">⚠ Low</span></div></div>
+  </div>
+
+  <div class="row row-6-4">
+    <div class="card">
+      <div class="card-hdr">
+        <div><div class="card-title" id="rev-title">Monthly Revenue — FY2025 vs FY2024</div><div class="card-sub">USD · Hover bars for detail · Use filters above</div></div>
+        <span class="cbadge cb-green" id="rev-badge">▲ +38.8% YoY</span>
+      </div>
+      <div class="chart-wrap" style="height:230px"><canvas id="revCanvas"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hdr">
+        <div><div class="card-title">Expense Breakdown</div><div class="card-sub">FY2025 Operating Costs — USD</div></div>
+        <span class="cbadge cb-navy">Opex Mix</span>
+      </div>
+      <div class="chart-wrap" style="height:230px"><canvas id="expCanvas"></canvas></div>
+    </div>
+  </div>
+
+  <div class="row row-5-5">
+    <div class="card">
+      <div class="card-hdr">
+        <div><div class="card-title">EBITDA Margin Trend</div><div class="card-sub">Monthly % · FY2024 (dashed gold) vs FY2025 (navy)</div></div>
+        <span class="cbadge cb-orange">Avg: –4.5% FY25</span>
+      </div>
+      <div class="chart-wrap" style="height:200px"><canvas id="ebitdaCanvas"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hdr">
+        <div><div class="card-title">Cash Position</div><div class="card-sub">Monthly closing balance — 28 months</div></div>
+        <span class="cbadge cb-orange">$6,187 Apr-26</span>
+      </div>
+      <div class="chart-wrap" style="height:200px"><canvas id="cashCanvas"></canvas></div>
+    </div>
+  </div>
+
+  <div class="row row-5-5">
+    <div class="card">
+      <div class="card-hdr">
+        <div><div class="card-title">Top Customers by Revenue</div><div class="card-sub">FY2025 — USD · % of total shown</div></div>
+        <span class="cbadge cb-navy">6 clients</span>
+      </div>
+      <div class="chart-wrap" style="height:210px"><canvas id="custCanvas"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-hdr">
+        <div><div class="card-title">P&amp;L Waterfall — FY2025</div><div class="card-sub">Revenue → Gross Profit → EBITDA bridge</div></div>
+        <span class="cbadge cb-orange">EBITDA: –$14,348</span>
+      </div>
+      <div id="wfContainer" style="padding-top:4px"></div>
+    </div>
+  </div>
+
+  <!-- ══ AR AGING — FULL REDESIGN ══ -->
+  <div class="row row-full">
+    <div class="card" style="padding:0;overflow:hidden">
+
+      <!-- AR Header -->
+      <div style="background:#1E3A5F;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px">Accounts Receivable Aging Report</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:2px">Reference Date: 16 April 2026 &nbsp;·&nbsp; 8 Open Invoices &nbsp;·&nbsp; Total Outstanding: $64,560</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <span style="background:rgba(39,174,96,.2);color:#5DE87A;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px">✓ $23,320 Current</span>
+          <span style="background:rgba(230,126,34,.2);color:#FFAA55;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px">⚠ $38,820 Overdue</span>
+          <span style="background:rgba(192,57,43,.2);color:#FF7060;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px">🔴 $2,420 Critical</span>
+        </div>
+      </div>
+
+      <!-- Bucket Progress Bars -->
+      <div style="padding:14px 20px 0;background:#F8FAFC">
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px">
+          <div style="background:#fff;border-radius:8px;padding:10px 12px;border-left:4px solid #27AE60;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#64748B">Current</div>
+            <div style="font-size:18px;font-weight:800;color:#1D6340;margin:3px 0">$23,320</div>
+            <div style="background:#E2E8F0;height:5px;border-radius:3px;overflow:hidden"><div style="background:#27AE60;height:100%;width:36.1%;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#64748B;margin-top:3px">36.1% of AR · 2 invoices</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px 12px;border-left:4px solid #F7DC6F;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#64748B">1–30 Days</div>
+            <div style="font-size:18px;font-weight:800;color:#7D6608;margin:3px 0">$14,190</div>
+            <div style="background:#E2E8F0;height:5px;border-radius:3px;overflow:hidden"><div style="background:#F7DC6F;height:100%;width:22%;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#64748B;margin-top:3px">22.0% of AR · 2 invoices</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px 12px;border-left:4px solid #F0A500;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#64748B">31–60 Days</div>
+            <div style="font-size:18px;font-weight:800;color:#7E5109;margin:3px 0">$8,250</div>
+            <div style="background:#E2E8F0;height:5px;border-radius:3px;overflow:hidden"><div style="background:#F0A500;height:100%;width:12.8%;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#64748B;margin-top:3px">12.8% of AR · 1 invoice</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px 12px;border-left:4px solid #E67E22;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#64748B">61–90 Days</div>
+            <div style="font-size:18px;font-weight:800;color:#784212;margin:3px 0">$16,380</div>
+            <div style="background:#E2E8F0;height:5px;border-radius:3px;overflow:hidden"><div style="background:#E67E22;height:100%;width:25.4%;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#64748B;margin-top:3px">25.4% of AR · 2 invoices</div>
+          </div>
+          <div style="background:#FADBD8;border-radius:8px;padding:10px 12px;border-left:4px solid #C0392B;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#922B21">90+ Days ⚠</div>
+            <div style="font-size:18px;font-weight:800;color:#C0392B;margin:3px 0">$2,420</div>
+            <div style="background:#E2E8F0;height:5px;border-radius:3px;overflow:hidden"><div style="background:#C0392B;height:100%;width:3.75%;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#922B21;margin-top:3px;font-weight:600">3.75% of AR · 1 invoice</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-col: Donut + Table -->
+      <div style="display:grid;grid-template-columns:440px 1fr;gap:0;padding:0 0 16px">
+
+        <!-- Donut chart column -->
+        <div style="padding:16px 16px 0 20px;border-right:1px solid #E2E8F0">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#1E3A5F;margin-bottom:8px">Distribution by Bucket</div>
+          <div style="height:340px;position:relative"><canvas id="arCanvas" style="width:100%;height:340px"></canvas></div>
+        </div>
+
+        <!-- Invoice table column -->
+        <div style="padding:0 16px 0 0;overflow-x:auto">
+          <table class="ar-tbl" style="margin-top:0">
+            <thead>
+              <tr>
+                <th style="padding-left:20px">Invoice #</th>
+                <th>Contact</th>
+                <th>Invoice Date</th>
+                <th>Due Date</th>
+                <th>Total (USD)</th>
+                <th>Outstanding (USD)</th>
+                <th>Days Overdue</th>
+                <th>Bucket</th>
+                <th>Risk Level</th>
+              </tr>
+            </thead>
+            <tbody id="arTbody"></tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Action Required banner -->
+      <div style="margin:0 16px 16px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:12px 16px;display:flex;align-items:flex-start;gap:10px">
+        <div style="font-size:16px;flex-shrink:0">🔴</div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#C0392B;text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px">Action Required</div>
+          <div style="font-size:11px;color:#7B241C;line-height:1.6">
+            <b>INV-0089 (Basket Case — $2,420 — 103 days)</b>: Issue formal 7-day demand notice. Place on stop-supply until cleared. &nbsp;·&nbsp;
+            <b>INV-0088 (Bayside Club — $12,100 — 77 days)</b>: Escalate to senior management. Combined risk exposure: <b>$14,520</b>.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="footer"><span>Demo Company (Global)</span> &nbsp;|&nbsp; Xero Demo Company (CA) &nbsp;|&nbsp; Currency: USD &nbsp;|&nbsp; Source: Xero &nbsp;|&nbsp; 16 April 2026</div>
+<div class="tip" id="tip"></div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────────────────
+var MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var MO26=['Jan','Feb','Mar','Apr'];
+var REV24=[10450,15620,16170,16170,20680,10890,18370,15950,21010,12650,19360,16500];
+var REV25=[19580,18700,16640,28490,21450,22660,30030,25850,31790,27940,34650,34320];
+var REV26=[31130,29840,41360,23320];
+var COGS24=[3657,5467,5660,5660,7238,3812,6430,5583,7354,4428,6776,5775];
+var COGS25=[6853,6545,5824,9972,7508,7931,10511,9048,11127,9779,12128,12012];
+var GP24=REV24.map(function(r,i){return r-COGS24[i]});
+var GP25=REV25.map(function(r,i){return r-COGS25[i]});
+function opex25(i){var sal=[20000,20000,20000,20000,20000,20000,21000,21000,21000,21000,21000,21000];var mkt=[4620,0,1650,0,4950,0,0,0,5280,0,0,0];var uti=[1540,1540,1540,1540,1540,1650,1650,1760,1760,1760,1870,1870];var cld=[0,0,0,2420,0,0,2530,0,0,0,0,2640];var off=[0,935,0,0,0,990,0,0,0,1045,0,0];var oth=[1200,1050,1100,1200,1150,1200,1300,1250,1350,1200,1400,1500];return sal[i]+4800+mkt[i]+uti[i]+cld[i]+off[i]+oth[i]}
+function opex24(i){var mkt=[3850,0,3850,0,0,4180,0,0,4400,0,0,0];var uti=[1320,1375,1375,1485,1485,1485,1485,1485,1485,1540,1540,1540];var cld=[1980,1980,0,2090,0,0,2200,0,0,0,0,2310];var off=[880,715,0,0,792,0,0,0,0,858,0,0];var oth=[1200,950,1100,1050,980,1150,1100,1200,1250,980,1100,1350];return 18000+4500+mkt[i]+uti[i]+cld[i]+off[i]+oth[i]}
+var EB24=GP24.map(function(g,i){return g-opex24(i)});
+var EB25=GP25.map(function(g,i){return g-opex25(i)});
+var EM24=EB24.map(function(e,i){return parseFloat((e/REV24[i]*100).toFixed(1))});
+var EM25=EB25.map(function(e,i){return parseFloat((e/REV25[i]*100).toFixed(1))});
+var CASH=[25820,13920,-1135,-12090,-2667,-21092,-10992,-22267,18108,23890,30610,15410,2830,14516,27042,15532,4552,-2448,-8558,16042,12442,9637,13597,9247,1167,2177,6187,6187];
+var CASHLBL=['J24','F24','M24','A24','M24','J24','J24','A24','S24','O24','N24','D24','J25','F25','M25','A25','M25','J25','J25','A25','S25','O25','N25','D25','J26','F26','M26','A26'];
+var CUSTS=[{n:'Sharp Corporation',v:139690,p:43.7},{n:'Bayside Club',v:69660,p:21.8},{n:'Buy Right Computers',v:49500,p:15.5},{n:'PowerDirect',v:30030,p:9.4},{n:'City Fitness',v:23100,p:7.2},{n:'Basket Case',v:9790,p:3.1}];
+var ARDATA=[{inv:'INV-0082',c:'Sharp Corporation',id:'01-Apr-26',dd:'15-Apr-26',t:16500,o:16500,d:'Current',b:0,r:'Low',rc:'#27AE60'},{inv:'INV-0083',c:'City Fitness',id:'05-Apr-26',dd:'19-Apr-26',t:6820,o:6820,d:'Current',b:0,r:'Low',rc:'#27AE60'},{inv:'INV-0084',c:'Buy Right Computers',id:'20-Mar-26',dd:'03-Apr-26',t:10780,o:10780,d:'+13 days',b:1,r:'Medium',rc:'#E67E22'},{inv:'INV-0085',c:'Basket Case',id:'10-Mar-26',dd:'24-Mar-26',t:3410,o:3410,d:'+23 days',b:1,r:'Medium',rc:'#E67E22'},{inv:'INV-0086',c:'PowerDirect',id:'28-Feb-26',dd:'14-Mar-26',t:8250,o:8250,d:'+33 days',b:2,r:'High',rc:'#C0392B'},{inv:'INV-0087',c:'City Fitness',id:'10-Feb-26',dd:'24-Feb-26',t:5280,o:5280,d:'+51 days',b:3,r:'High',rc:'#C0392B'},{inv:'INV-0088',c:'Bayside Club',id:'15-Jan-26',dd:'29-Jan-26',t:12100,o:12100,d:'+77 days',b:3,r:'High',rc:'#C0392B'},{inv:'INV-0089',c:'Basket Case',id:'20-Dec-25',dd:'03-Jan-26',t:2420,o:2420,d:'+103 days',b:4,r:'⚠ CRITICAL',rc:'#C0392B'}];
+var WFDATA=[{l:'Revenue',v:319840,t:'u'},{l:'less: COGS',v:-111944,t:'n'},{l:'= Gross Profit',v:207896,t:'u'},{l:'less: Salaries',v:-246000,t:'n'},{l:'less: Rent',v:-57600,t:'n'},{l:'less: Marketing',v:-20550,t:'n'},{l:'less: Utilities',v:-20970,t:'n'},{l:'less: Cloud',v:-7590,t:'n'},{l:'less: Supplies',v:-3970,t:'n'},{l:'less: Other Opex',v:-14700,t:'n'},{l:'= EBITDA',v:-14348,t:'n'}];
+
+// ── HELPERS ─────────────────────────────────────────────────────────────────
+var TIP=document.getElementById('tip');
+function showTip(e,h){TIP.innerHTML=h;TIP.style.display='block';TIP.style.left=(e.clientX+14)+'px';TIP.style.top=(e.clientY-10)+'px'}
+function hideTip(){TIP.style.display='none'}
+function fmt(v){if(v<0)return '–$'+Math.abs(Math.round(v)).toLocaleString();return '$'+Math.round(v).toLocaleString()}
+document.addEventListener('scroll',hideTip);
+
+function getDPR(){return window.devicePixelRatio||1}
+function setupC(id){
+  var c=document.getElementById(id);
+  if(!c)return null;
+  var dpr=getDPR();
+  var W=c.parentElement.clientWidth||600;
+  var H=c.parentElement.clientHeight||200;
+  c.width=Math.round(W*dpr);
+  c.height=Math.round(H*dpr);
+  c.style.width=W+'px';
+  c.style.height=H+'px';
+  var ctx=c.getContext('2d');
+  ctx.scale(dpr,dpr);
+  return {ctx:ctx,W:W,H:H,c:c};
+}
+
+// ── BAR CHART ───────────────────────────────────────────────────────────────
+function drawBar(id,labels,series,opts){
+  var s=setupC(id); if(!s)return;
+  var ctx=s.ctx,W=s.W,H=s.H;
+  opts=opts||{};
+  var PL=60,PR=14,PT=22,PB=38;
+  var CW=W-PL-PR,CH=H-PT-PB;
+  var allV=[];
+  series.forEach(function(sr){sr.d.forEach(function(v){allV.push(v)})});
+  var minV=Math.min(0,Math.min.apply(null,allV));
+  var maxV=Math.max.apply(null,allV);
+  var range=maxV-minV||1;
+  var nG=labels.length,nS=series.length;
+  var gW=CW/nG;
+  var bW=Math.min(gW/(nS+1),20);
+
+  ctx.clearRect(0,0,W,H);
+  ctx.font='9px Segoe UI,Arial';
+
+  // Grid + Y axis labels
+  var steps=5;
+  for(var i=0;i<=steps;i++){
+    var v=minV+(range/steps)*i;
+    var y=PT+CH-(v-minV)/range*CH;
+    ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(PL,y);ctx.lineTo(PL+CW,y);ctx.stroke();
+    ctx.fillStyle='#64748B';ctx.textAlign='right';
+    ctx.fillText(fmt(v),PL-5,y+3);
+  }
+  // Zero line
+  if(minV<0){
+    var zy=PT+CH-(-minV)/range*CH;
+    ctx.strokeStyle='#94A3B8';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(PL,zy);ctx.lineTo(PL+CW,zy);ctx.stroke();
+  }
+  // Bars
+  series.forEach(function(sr,si){
+    sr.d.forEach(function(v,gi){
+      var gx=PL+gi*gW+(gW-nS*bW)/2+si*bW;
+      var zero=PT+CH-(-minV)/range*CH;
+      var bh=Math.abs(v)/range*CH;
+      var by=v>=0?zero-bh:zero;
+      ctx.fillStyle=sr.col;
+      ctx.beginPath();
+      ctx.rect(gx,by,bW-2,Math.max(bh,1));
+      ctx.fill();
+    });
+  });
+  // X labels
+  ctx.fillStyle='#64748B';ctx.textAlign='center';
+  labels.forEach(function(l,i){
+    ctx.fillText(l,PL+i*gW+gW/2,H-PB+15);
+  });
+  // Legend
+  if(series.length>1){
+    var lx=PL;
+    series.forEach(function(sr){
+      ctx.fillStyle=sr.col;ctx.fillRect(lx,4,10,8);
+      ctx.fillStyle='#64748B';ctx.textAlign='left';
+      ctx.fillText(sr.name,lx+13,12);
+      lx+=ctx.measureText(sr.name).width+28;
+    });
+  }
+  // Hover
+  s.c.onmousemove=function(e){
+    var rect=s.c.getBoundingClientRect();
+    var mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    var found=false;
+    series.forEach(function(sr,si){
+      sr.d.forEach(function(v,gi){
+        var gx=PL+gi*gW+(gW-nS*bW)/2+si*bW;
+        var zero=PT+CH-(-minV)/range*CH;
+        var bh=Math.abs(v)/range*CH;
+        var by=v>=0?zero-bh:zero;
+        if(mx>=gx&&mx<=gx+bW-2&&my>=by&&my<=by+bh){
+          showTip(e,'<b>'+sr.name+'</b><br>'+labels[gi]+': <b>'+fmt(v)+'</b>');
+          found=true;
+        }
+      });
+    });
+    if(!found)hideTip();
+  };
+  s.c.onmouseleave=hideTip;
+}
+
+// ── CASH BAR (colored) ───────────────────────────────────────────────────────
+function drawCash(id){
+  var s=setupC(id);if(!s)return;
+  var ctx=s.ctx,W=s.W,H=s.H;
+  var PL=62,PR=10,PT=16,PB=38;
+  var CW=W-PL-PR,CH=H-PT-PB;
+  var minV=Math.min.apply(null,CASH);
+  var maxV=Math.max.apply(null,CASH);
+  var range=maxV-minV||1;
+  var nG=CASH.length,bW=Math.max(Math.floor(CW/nG)-2,3);
+
+  ctx.clearRect(0,0,W,H);
+  ctx.font='9px Segoe UI,Arial';
+
+  var steps=4;
+  for(var i=0;i<=steps;i++){
+    var v=minV+(range/steps)*i;
+    var y=PT+CH-(v-minV)/range*CH;
+    ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(PL,y);ctx.lineTo(PL+CW,y);ctx.stroke();
+    ctx.fillStyle='#64748B';ctx.textAlign='right';
+    ctx.fillText(fmt(v),PL-5,y+3);
+  }
+  var zy=PT+CH-(-minV)/range*CH;
+  ctx.strokeStyle='#94A3B8';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(PL,zy);ctx.lineTo(PL+CW,zy);ctx.stroke();
+
+  CASH.forEach(function(v,i){
+    var gx=PL+i*(CW/nG)+(CW/nG-bW)/2;
+    var zero=zy,bh=Math.abs(v)/range*CH,by=v>=0?zero-bh:zero;
+    ctx.fillStyle=v>=0?'rgba(39,174,96,0.8)':'rgba(192,57,43,0.8)';
+    ctx.fillRect(gx,by,bW,Math.max(bh,1));
+  });
+
+  var step=Math.ceil(nG/12);
+  ctx.fillStyle='#64748B';ctx.textAlign='center';
+  CASHLBL.forEach(function(l,i){if(i%step===0)ctx.fillText(l,PL+i*(CW/nG)+(CW/nG)/2,H-4)});
+
+  s.c.onmousemove=function(e){
+    var rect=s.c.getBoundingClientRect();
+    var mx=e.clientX-rect.left;
+    var i=Math.floor((mx-PL)/(CW/nG));
+    if(i>=0&&i<nG){showTip(e,'<b>'+CASHLBL[i]+'</b><br>Cash: <b>'+fmt(CASH[i])+'</b>')}
+    else hideTip();
+  };
+  s.c.onmouseleave=hideTip;
+}
+
+// ── LINE CHART ───────────────────────────────────────────────────────────────
+function drawLine(id,labels,series,pctAxis,targetLine){
+  var s=setupC(id);if(!s)return;
+  var ctx=s.ctx,W=s.W,H=s.H;
+  var PL=50,PR=14,PT=20,PB=30;
+  var CW=W-PL-PR,CH=H-PT-PB;
+  var allV=[];
+  series.forEach(function(sr){sr.d.forEach(function(v){allV.push(v)})});
+  var minV=Math.min.apply(null,allV),maxV=Math.max.apply(null,allV);
+  var range=maxV-minV||1;
+  var n=labels.length,xS=n>1?CW/(n-1):CW;
+
+  ctx.clearRect(0,0,W,H);
+  ctx.font='9px Segoe UI,Arial';
+
+  var steps=4;
+  for(var i=0;i<=steps;i++){
+    var v=minV+(range/steps)*i;
+    var y=PT+CH-(v-minV)/range*CH;
+    ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(PL,y);ctx.lineTo(PL+CW,y);ctx.stroke();
+    ctx.fillStyle='#64748B';ctx.textAlign='right';
+    ctx.fillText(pctAxis?v.toFixed(1)+'%':fmt(v),PL-4,y+3);
+  }
+  if(minV<0){
+    var zy=PT+CH-(0-minV)/range*CH;
+    ctx.strokeStyle='#C0392B';ctx.lineWidth=1;ctx.setLineDash([4,3]);
+    ctx.beginPath();ctx.moveTo(PL,zy);ctx.lineTo(PL+CW,zy);ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  if(targetLine!==undefined){
+    var ty=PT+CH-(targetLine-minV)/range*CH;
+    ctx.strokeStyle='#E67E22';ctx.lineWidth=1;ctx.setLineDash([3,3]);
+    ctx.beginPath();ctx.moveTo(PL,ty);ctx.lineTo(PL+CW,ty);ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle='#E67E22';ctx.textAlign='left';ctx.font='8px Segoe UI,Arial';
+    ctx.fillText('Target: '+targetLine+'%',PL+2,ty-3);
+  }
+  series.forEach(function(sr){
+    var pts=sr.d.map(function(v,i){return{x:PL+i*xS,y:PT+CH-(v-minV)/range*CH}});
+    if(sr.fill){
+      ctx.beginPath();ctx.moveTo(pts[0].x,PT+CH);
+      pts.forEach(function(p){ctx.lineTo(p.x,p.y)});
+      ctx.lineTo(pts[pts.length-1].x,PT+CH);ctx.closePath();
+      ctx.fillStyle=sr.fill;ctx.fill();
+    }
+    ctx.strokeStyle=sr.col;ctx.lineWidth=sr.lw||2;
+    if(sr.dash)ctx.setLineDash(sr.dash);else ctx.setLineDash([]);
+    ctx.beginPath();
+    pts.forEach(function(p,i){if(i===0)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y)});
+    ctx.stroke();ctx.setLineDash([]);
+    pts.forEach(function(p){ctx.beginPath();ctx.arc(p.x,p.y,2.5,0,Math.PI*2);ctx.fillStyle=sr.col;ctx.fill()});
+  });
+  ctx.fillStyle='#64748B';ctx.textAlign='center';ctx.font='9px Segoe UI,Arial';
+  var ls=Math.ceil(n/12);
+  labels.forEach(function(l,i){if(i%ls===0)ctx.fillText(l,PL+i*xS,H-4)});
+  if(series.length>1){
+    var lx=PL;
+    series.forEach(function(sr){
+      ctx.strokeStyle=sr.col;ctx.lineWidth=2;
+      if(sr.dash)ctx.setLineDash(sr.dash);
+      ctx.beginPath();ctx.moveTo(lx,7);ctx.lineTo(lx+14,7);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle='#64748B';ctx.textAlign='left';ctx.font='9px Segoe UI,Arial';
+      ctx.fillText(sr.name,lx+17,11);lx+=ctx.measureText(sr.name).width+36;
+    });
+  }
+  s.c.onmousemove=function(e){
+    var rect=s.c.getBoundingClientRect();
+    var mx=e.clientX-rect.left;
+    var idx=Math.round((mx-PL)/xS);
+    if(idx>=0&&idx<n){
+      var tip='<b>'+labels[idx]+'</b>';
+      series.forEach(function(sr){tip+='<br>'+sr.name+': <b>'+(pctAxis?sr.d[idx].toFixed(1)+'%':fmt(sr.d[idx]))+'</b>'});
+      showTip(e,tip);
+    } else hideTip();
+  };
+  s.c.onmouseleave=hideTip;
+}
+
+// ── DONUT (fixed: bottom legend, works at any width) ─────────────────────────
+function drawDonut(id,labels,values,colors,center){
+  var s=setupC(id);if(!s)return;
+  var ctx=s.ctx,W=s.W,H=s.H;
+  var total=values.reduce(function(a,b){return a+b},0);
+  // Reserve bottom for legend
+  var legendH=labels.length*18+8;
+  var chartH=H-legendH;
+  var cx=W/2, cy=chartH/2;
+  var outerR=Math.min(W/2,chartH/2)*0.78, innerR=outerR*0.52;
+  var angle=-Math.PI/2;
+  var slices=[];
+
+  ctx.clearRect(0,0,W,H);
+
+  // Draw slices
+  values.forEach(function(v,i){
+    var sweep=v/total*Math.PI*2;
+    slices.push({start:angle,sweep:sweep,col:colors[i],lbl:labels[i],v:v});
+    ctx.beginPath();
+    ctx.arc(cx,cy,outerR,angle,angle+sweep);
+    ctx.arc(cx,cy,innerR,angle+sweep,angle,true);
+    ctx.closePath();
+    ctx.fillStyle=colors[i];ctx.fill();
+    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+    angle+=sweep;
+  });
+
+  // Center label
+  if(center){
+    ctx.fillStyle='#1E3A5F';ctx.font='bold 13px Segoe UI,Arial';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(center[0],cx,cy-8);
+    ctx.font='9px Segoe UI,Arial';ctx.fillStyle='#64748B';
+    ctx.fillText(center[1],cx,cy+9);
+    ctx.textBaseline='alphabetic';
+  }
+
+  // Bottom legend (2 per row for compact display)
+  var cols=2;
+  var itemW=W/cols;
+  labels.forEach(function(l,i){
+    var col=i%cols, row=Math.floor(i/cols);
+    var lx=col*itemW+10;
+    var ly=chartH+row*18+12;
+    ctx.fillStyle=colors[i];
+    ctx.beginPath();ctx.arc(lx+4,ly-3,5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#374151';ctx.textAlign='left';ctx.font='9px Segoe UI,Arial';
+    var pct=((values[i]/total)*100).toFixed(1)+'%';
+    var shortLbl=l.length>14?l.slice(0,13)+'…':l;
+    ctx.fillText(shortLbl+' '+pct,lx+12,ly);
+  });
+
+  // Hover
+  s.c.onmousemove=function(e){
+    var rect=s.c.getBoundingClientRect();
+    var mx=e.clientX-rect.left-cx,my=e.clientY-rect.top-cy;
+    var dist=Math.sqrt(mx*mx+my*my);
+    if(dist>innerR&&dist<outerR){
+      var a=Math.atan2(my,mx)-(-Math.PI/2);if(a<0)a+=Math.PI*2;
+      var sa=0;
+      slices.forEach(function(sl){
+        if(a>=sa&&a<sa+sl.sweep)showTip(e,'<b>'+sl.lbl+'</b><br>'+fmt(sl.v)+' ('+((sl.v/total)*100).toFixed(1)+'%)');
+        sa+=sl.sweep;
+      });
+    } else hideTip();
+  };
+  s.c.onmouseleave=hideTip;
+}
+
+// ── HORIZONTAL BAR ───────────────────────────────────────────────────────────
+function drawHBar(id){
+  var s=setupC(id);if(!s)return;
+  var ctx=s.ctx,W=s.W,H=s.H;
+  var PL=155,PR=90,PT=8,PB=8;
+  var CW=W-PL-PR,CH=H-PT-PB;
+  var maxV=CUSTS[0].v;
+  var bH=Math.min(CH/CUSTS.length-8,26);
+  var gap=(CH-bH*CUSTS.length)/(CUSTS.length+1);
+  var cols=['#1E3A5F','#243956','#2F5180','#C9A84C','#27AE60','#2980B9'];
+
+  ctx.clearRect(0,0,W,H);
+  CUSTS.forEach(function(c,i){
+    var by=PT+gap*(i+1)+bH*i;
+    var bw=c.v/maxV*CW;
+    ctx.fillStyle='#1A1A2E';ctx.textAlign='right';ctx.font='10px Segoe UI,Arial';
+    ctx.fillText(c.n,PL-8,by+bH/2+4);
+    ctx.fillStyle=cols[i];ctx.fillRect(PL,by,bw,bH);
+    ctx.fillStyle='#1A1A2E';ctx.textAlign='left';ctx.font='9px Segoe UI,Arial';
+    ctx.fillText(fmt(c.v)+'  '+c.p+'%',PL+bw+6,by+bH/2+4);
+  });
+  s.c.onmousemove=function(e){
+    var rect=s.c.getBoundingClientRect();
+    var my=e.clientY-rect.top;
+    CUSTS.forEach(function(c,i){
+      var by=PT+gap*(i+1)+bH*i;
+      if(my>=by&&my<=by+bH)showTip(e,'<b>'+c.n+'</b><br>FY2025 Revenue: <b>'+fmt(c.v)+'</b><br>% of Total: <b>'+c.p+'%</b>');
+    });
+  };
+  s.c.onmouseleave=hideTip;
+}
+
+// ── WATERFALL ─────────────────────────────────────────────────────────────────
+function buildWF(){
+  var cont=document.getElementById('wfContainer');
+  var maxV=319840;
+  var html='';
+  WFDATA.forEach(function(r){
+    var pct=Math.min(Math.abs(r.v)/maxV*100,100);
+    var isNeg=r.v<0,isNeu=r.t==='u';
+    var barCls=isNeu?'wf-neu':(isNeg?'wf-neg':'wf-pos');
+    var valCls=isNeu?'wfvu':(isNeg?'wfvn':'wfvp');
+    var ml=isNeg&&!isNeu?'margin-left:'+(100-pct)+'%':'';
+    var vStr=(r.v>=0?'+':'')+fmt(r.v);
+    html+='<div class="wf-row"><div class="wf-lbl">'+r.l+'</div><div class="wf-wrap"><div class="wf-bar '+barCls+'" style="width:'+pct+'%;'+ml+'"></div></div><div class="wf-val '+valCls+'">'+vStr+'</div></div>';
+  });
+  cont.innerHTML=html;
+}
+
+// ── AR TABLE ──────────────────────────────────────────────────────────────────
+function buildARTable(){
+  var bls=['b0','b1','b2','b3','b4'];
+  var bns=['Current','1-30 Days','31-60 Days','61-90 Days','90+ Days'];
+  var rowBg=['rgba(240,255,244,0.8)','rgba(255,254,240,0.8)','rgba(255,251,235,0.8)','rgba(255,247,237,0.8)','rgba(255,241,240,0.8)'];
+  var html=ARDATA.map(function(r){
+    return '<tr style="background:'+rowBg[r.b]+'">' +
+      '<td style="padding-left:20px;font-weight:700;color:#1E3A5F;white-space:nowrap">'+r.inv+'</td>' +
+      '<td style="font-weight:600">'+r.c+'</td>' +
+      '<td style="color:#64748B;white-space:nowrap">'+r.id+'</td>' +
+      '<td style="color:#64748B;white-space:nowrap">'+r.dd+'</td>' +
+      '<td style="text-align:right;font-weight:500">$'+r.t.toLocaleString()+'</td>' +
+      '<td style="text-align:right;font-weight:800;color:'+r.rc+'">$'+r.o.toLocaleString()+'</td>' +
+      '<td style="text-align:center;font-weight:700;color:'+r.rc+'">'+r.d+'</td>' +
+      '<td style="text-align:center"><span class="btag '+bls[r.b]+'">'+bns[r.b]+'</span></td>' +
+      '<td style="text-align:center;font-weight:700;font-size:10px;color:'+r.rc+'">'+r.r+'</td>' +
+      '</tr>';
+  }).join('');
+  document.getElementById('arTbody').innerHTML=html;
+}
+
+// ── FILTER LOGIC ──────────────────────────────────────────────────────────────
+var curYear='2025',curMetric='revenue',cmpOn=true;
+
+function getMetricSeries(yr){
+  if(curMetric==='revenue')return yr===2024?REV24:yr===2025?REV25:REV26;
+  if(curMetric==='gp')return yr===2024?GP24:yr===2025?GP25:REV26.map(function(r){return r*0.65});
+  if(curMetric==='ebitda')return yr===2024?EB24:yr===2025?EB25:REV26.map(function(r){return r*0.05});
+  return REV25;
+}
+
+function buildRevChart(){
+  var yr=curYear==='all'?2025:parseInt(curYear);
+  var labels=yr===2026?MO26:MO;
+  var d1=getMetricSeries(yr).slice(0,labels.length);
+  var series=[{name:'FY'+yr,d:d1,col:'#1E3A5F'}];
+  if(cmpOn&&yr!==2026){
+    var cmpYr=yr===2025?2024:2025;
+    series.push({name:'FY'+cmpYr,d:getMetricSeries(cmpYr).slice(0,12),col:'rgba(201,168,76,0.7)'});
+  }
+  var mNames={revenue:'Revenue',gp:'Gross Profit',ebitda:'EBITDA'};
+  document.getElementById('rev-title').textContent='Monthly '+mNames[curMetric]+(cmpOn&&yr!==2026?' — FY'+yr+' vs FY'+(yr===2025?2024:2025):' — FY'+(yr===2026?'2026 YTD':yr));
+  drawBar('revCanvas',labels,series,{legend:true});
+}
+
+// KPI data per year
+var KPI_BY_YEAR = {
+  '2024': {
+    revLbl:'FY2024 Revenue', revVal:'$193,820', revSub:'Baseline year — FY2025 reference',
+    revColor:'green',
+    gpVal:'65.1%', gpSub:'GP: $125,980 | Baseline',
+    ebitdaVal:'–17.2%', ebitdaSub:'EBITDA: –$33,360 | High opex', ebitdaColor:'red',
+    growthLbl:'Revenue vs FY2025', growthVal:'–38.8%', growthSub:'FY2024 was the baseline year', growthColor:'red'
+  },
+  '2025': {
+    revLbl:'FY2025 Revenue', revVal:'$319,840', revSub:'▲ +38.8% vs FY2024 $230,350',
+    revColor:'green',
+    gpVal:'65.0%', gpSub:'GP: $207,896 | FY24: 65.0%',
+    ebitdaVal:'–4.5%', ebitdaSub:'EBITDA: –$14,348 | Opex heavy', ebitdaColor:'orange',
+    growthLbl:'Revenue Growth YoY', growthVal:'+38.8%', growthSub:'FY24 → FY25 | Strong trajectory', growthColor:'green'
+  },
+  '2026': {
+    revLbl:'2026 YTD Revenue', revVal:'$125,650', revSub:'Jan–Apr 2026 (4 months only)',
+    revColor:'green',
+    gpVal:'~65.0%', gpSub:'GP: ~$81,673 | On track',
+    ebitdaVal:'~3.2%', ebitdaSub:'EBITDA improving | est. YTD', ebitdaColor:'green',
+    growthLbl:'YTD vs FY25 Pace', growthVal:'On Track', growthSub:'$125,650 in 4 months | ↑', growthColor:'green'
+  },
+  'all': {
+    revLbl:'Total Revenue (All)', revVal:'$639,310', revSub:'FY2024 + FY2025 + 2026 YTD',
+    revColor:'green',
+    gpVal:'65.0%', gpSub:'Consistent margin across all years',
+    ebitdaVal:'–9.1%', ebitdaSub:'FY24–26 average EBITDA margin', ebitdaColor:'orange',
+    growthLbl:'FY24 → FY25 Growth', growthVal:'+38.8%', growthSub:'Primary growth period', growthColor:'green'
+  }
+};
+
+function setKpiClass(el, colorClass){
+  el.classList.remove('green','orange','red');
+  el.classList.add(colorClass);
+}
+
+function updateKPIs(yr){
+  var d = KPI_BY_YEAR[yr] || KPI_BY_YEAR['2025'];
+  // Revenue card
+  var revCard = document.getElementById('kpi-rev');
+  if(revCard){
+    setKpiClass(revCard, d.revColor);
+    document.getElementById('kpi-rev-lbl').textContent = d.revLbl;
+    var revValEl = document.getElementById('kpi-rev-val');
+    revValEl.textContent = d.revVal;
+    setKpiClass(revValEl, d.revColor);
+    document.getElementById('kpi-rev-sub').innerHTML = d.revSub;
+  }
+  // GP card
+  var gpValEl = document.getElementById('kpi-gp-val');
+  if(gpValEl){ gpValEl.textContent = d.gpVal; }
+  var gpSubEl = document.getElementById('kpi-gp-sub');
+  if(gpSubEl){ gpSubEl.textContent = d.gpSub; }
+  // EBITDA card
+  var ebCard = document.getElementById('kpi-ebitda');
+  if(ebCard){
+    setKpiClass(ebCard, d.ebitdaColor);
+    var ebValEl = document.getElementById('kpi-ebitda-val');
+    ebValEl.textContent = d.ebitdaVal;
+    setKpiClass(ebValEl, d.ebitdaColor);
+    document.getElementById('kpi-ebitda-sub').textContent = d.ebitdaSub;
+  }
+  // Growth card
+  var grCard = document.getElementById('kpi-growth');
+  if(grCard){
+    setKpiClass(grCard, d.growthColor);
+    document.getElementById('kpi-growth-lbl').textContent = d.growthLbl;
+    var grValEl = document.getElementById('kpi-growth-val');
+    grValEl.textContent = d.growthVal;
+    setKpiClass(grValEl, d.growthColor);
+    document.getElementById('kpi-growth-sub').textContent = d.growthSub;
+  }
+}
+
+function filterYear(yr){
+  curYear=yr;
+  ['all','2024','2025','2026'].forEach(function(y){document.getElementById('fy-'+y).classList.toggle('active',y===yr)});
+  var bdg=document.getElementById('rev-badge');
+  bdg.textContent=yr==='2025'?'▲ +38.8% YoY':yr==='2024'?'FY2024 Baseline':yr==='2026'?'YTD 4 months':'All Years';
+  updateKPIs(yr);
+  buildRevChart();
+}
+
+function filterMetric(m){
+  curMetric=m;
+  ['revenue','gp','ebitda'].forEach(function(x){document.getElementById('mt-'+x).classList.toggle('active',x===m)});
+  buildRevChart();
+}
+
+function toggleCompare(){
+  cmpOn=!cmpOn;
+  var btn=document.getElementById('cmp-btn');
+  btn.textContent='YoY Overlay '+(cmpOn?'ON':'OFF');
+  btn.classList.toggle('active',cmpOn);
+  buildRevChart();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function buildAll(){
+  buildRevChart();
+  drawLine('ebitdaCanvas',MO,[
+    {name:'FY2025',d:EM25,col:'#1E3A5F',lw:2,fill:'rgba(30,58,95,0.07)'},
+    {name:'FY2024',d:EM24,col:'#C9A84C',lw:1.5,dash:[4,3]}
+  ],true,10);
+  drawCash('cashCanvas');
+  drawDonut('expCanvas',['Salaries','Rent','Marketing','Utilities','Cloud','Supplies','Other'],[246000,57600,20550,20970,7590,3970,14700],['#1E3A5F','#C9A84C','#27AE60','#2980B9','#8E44AD','#E67E22','#95A5A6'],['$371K','Total Opex']);
+  drawDonut('arCanvas',['Current','1-30 Days','31-60 Days','61-90 Days','90+ Days'],[23320,14190,8250,16380,2420],['#27AE60','#F7DC6F','#F0A500','#E67E22','#C0392B'],['$64,560','Outstanding']);
+  drawHBar('custCanvas');
+  buildWF();
+  buildARTable();
+}
+
+window.addEventListener('load',function(){setTimeout(buildAll,100)});
+window.addEventListener('resize',function(){clearTimeout(window._rt);window._rt=setTimeout(buildAll,160)});
+</script>
+
+  </div>
+</div>
+
+<script>
+function launchDashboard(){
+  document.getElementById('landing-view').style.display='none';
+  var dv=document.getElementById('dashboard-view');
+  dv.classList.add('active');
+  window.scrollTo(0,0);
+  setTimeout(function(){
+    if(typeof buildAll==='function') buildAll();
+  },120);
+}
+function backToLanding(){
+  document.getElementById('dashboard-view').classList.remove('active');
+  document.getElementById('landing-view').style.display='';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
